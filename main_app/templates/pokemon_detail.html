@@ -27,6 +27,40 @@
             </span>
         </a>
     </div>
+
+    <div class="detail__evolution mb-5">
+    <h3 class="title is-3">Evolution</h3>
+    <form class="mb-5" action="{% url 'evolution_create' pokemon.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="name"
+                    placeholder="name"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Add Evolution" />
+            </div>
+        </div>
+    </form>
+    {% for evolution in pokemon.evolutions.all %}
+    <div class="evolution">
+      <span><b>{{evolution.name}}</b></span>
+    </div>
+        {% empty %}
+    <article class="message">
+      <div class="message-header">
+        <p>No Evolutions</p>
+      </div>
+    </article>
+
+    {% endfor %}
+    </div>
+
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
         <p>{{pokemon.bio}}</p>

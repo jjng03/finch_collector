@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
-from .models import Pokemon
-from django.urls import reverse
+from .models import Pokemon, Evolution
+
 
 class Home(TemplateView):
     template_name = "home.html"
@@ -29,8 +29,7 @@ class PokemonCreate(CreateView):
     model = Pokemon
     fields = ['name', 'img', 'bio', 'verified_pokemon']
     template_name = "pokemon_create.html"
-    def get_success_url(self):
-        return reverse('pokemon_detail', kwargs={'pk: self.object.pk'})
+    success_url = "/pokedex/"
 
 class PokemonDetail(DetailView):
     model = Pokemon
@@ -40,10 +39,15 @@ class PokemonUpdate(UpdateView):
     model = Pokemon
     fields = ['name', 'img', 'bio', 'verified_pokemon']
     template_name = "pokemon_update.html"
-    def get_success_url(self):
-        return reverse('pokemon_detail', kwargs={'pk': self.object.pk})
+    success_url = "/pokedex/"
 
 class PokemonDelete(DeleteView):
     model = Pokemon
     template_name = "pokemon_delete_confirmation.html"
     success_url = "/pokedex/"
+
+class EvolutionCreate(View):
+    def post(self, request, pk):
+        name = request.POST.get("name")
+        Evolution.objects.create(name=name)
+        return redirect('pokemon_detail', pk=pk)
