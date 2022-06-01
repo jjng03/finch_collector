@@ -12,6 +12,10 @@ body {
     align-items: center;
 }
 
+.background {
+    height: 200px;
+}
+
 h1,
 h2,
 h3 {
@@ -84,3 +88,13 @@ img {
 .detail__container {
   margin-top: 500px;
 }
+
+.home-logo {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

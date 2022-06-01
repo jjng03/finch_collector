@@ -13,3 +13,11 @@ class Pokemon(models.Model):
 
     class Meta:
         ordering = ['name']
+
+class Evolution(models.Model):
+
+    name = models.CharField(max_length=150)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="evolutions")
+
+    def __str__(self):
+        return self.name
