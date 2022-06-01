@@ -49,5 +49,6 @@ class PokemonDelete(DeleteView):
 class EvolutionCreate(View):
     def post(self, request, pk):
         name = request.POST.get("name")
-        Evolution.objects.create(name=name)
+        pokemon = Pokemon.objects.get(pk=pk)
+        Evolution.objects.create(name=name, pokemon=pokemon)
         return redirect('pokemon_detail', pk=pk)
