@@ -13,5 +13,11 @@ class PokemonList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["pokemon"] = Pokemon.objects.all()
+        name = self.request.GET.get("name")
+        if name != None:
+            context["pokemon"] = Pokemon.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["pokemon"] = Pokemon.objects.all()
+            context["header"] = "All Pokemon"
         return context
