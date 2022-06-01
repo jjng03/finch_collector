@@ -1,7 +1,15 @@
 body {
-  background-color: #121212;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(203,24,24,1) 100%, rgba(195,37,23,1) 100%);
   color: #ffffff;
   min-height: 100vh;
+}
+
+.logo {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1,
