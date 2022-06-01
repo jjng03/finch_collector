@@ -7,12 +7,12 @@
 
 <h1 class="title pt-5">Trending Pokemon</h1>
 <div class="gallery">
-  {% for poke in pokedex %}
+  {% for poke in pokemon %}
   <a href="">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">
-          <img src="{{poke.image}}" alt="{{poke.name}}" />
+          <img src="{{poke.img}}" alt="{{poke.name}}" />
         </figure>
       </div>
       <div class="card-header">
