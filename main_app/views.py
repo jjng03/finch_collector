@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 from .models import Pokemon
 
 class Home(TemplateView):
@@ -28,3 +29,7 @@ class PokemonCreate(CreateView):
     fields = ['name', 'img', 'bio', 'verified_pokemon']
     template_name = "pokemon_create.html"
     success_url = "/pokedex/"
+
+class PokemonDetail(DetailView):
+    model = Pokemon
+    template_name = "pokemon_detail.html"

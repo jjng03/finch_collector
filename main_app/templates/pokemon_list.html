@@ -16,7 +16,7 @@
 </form>
 <div class="gallery">
   {% for poke in pokemon %}
-  <a href="">
+  <a href="{% url 'pokemon_detail' poke.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">
